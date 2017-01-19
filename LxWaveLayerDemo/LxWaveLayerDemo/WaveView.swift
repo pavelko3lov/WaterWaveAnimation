@@ -61,7 +61,7 @@ open class WaveView: UIView {
         imageView.center = CGPoint(x: bounds.size.width / 2, y: bounds.size.height / 2)
         imageView.clipsToBounds = true
         self.addSubview(imageView)
-        imageView.backgroundColor = UIColor.yellow
+//        imageView.backgroundColor = UIColor.yellow
         
 //        maskImageLayer.frame = imageView.bounds
 //        imageView.layer.mask = maskImageLayer
@@ -166,7 +166,7 @@ open class WaveView: UIView {
         maskpath.move(to: CGPoint(x: 0, y: height))
         
         let maskImagePath = UIBezierPath()
-        maskImagePath.move(to: CGPoint(x: 0, y: imageView.frame.size.height / 8 + waveHeight * 4))
+        maskImagePath.move(to: CGPoint(x: 0, y: imageView.frame.size.height / 2))
 //        maskImagePath.move(to: imageView.convert(CGPoint(x: 0, y: vHeight), from: imageView.superview))
 //        print("imageView.convert(CGPoint(x: 0, y: height), from: imageView.superview)", imageView.convert(CGPoint(x: 0, y: vHeight + waveHeight * 20), from: imageView.superview))
 //        print("111", CGPoint(x: 0, y: imageView.frame.size.height / 2))
@@ -181,11 +181,20 @@ open class WaveView: UIView {
             y = height * CGFloat(sinf(waveCurvature_f * Float(x) + offset_f + Float(phase) * Float(2 * M_PI)))
             maskpath.addLine(to: CGPoint(x: CGFloat(x), y: y - waveHeight))
             
+            
+            
 //            print(CGPoint(x: CGFloat(x), y: y - waveHeight), imageView.convert(CGPoint(x: CGFloat(x), y: y - waveHeight), from: imageView.superview))
 //            maskImagePath.addLine(to: imageView.convert(CGPoint(x: CGFloat(x), y: y - waveHeight), from: imageView.superview))
         }
-        maskImagePath.addLine(to: CGPoint(x: imageView.frame.size.width, y: imageView.frame.size.height / 8 + waveHeight * 4))
-        print("waveHeight * 4", waveHeight * 4)
+        
+        
+        for x in 0...Int(imageView.frame.width) {
+            let y: CGFloat = height * CGFloat(sinf(waveCurvature_f * Float(x) + offset_f)) + imageView.frame.size.height / 2
+            maskImagePath.addLine(to: CGPoint(x: CGFloat(x), y: y - waveHeight / 2))
+        }
+        
+//        maskImagePath.addLine(to: CGPoint(x: imageView.frame.size.width, y: imageView.frame.size.height / 2))
+//        print("waveHeight * 4", waveHeight * 4)
         
         path.addLine(to: CGPoint(x: frame.width, y: self.frame.size.height))
         path.addLine(to: CGPoint(x: 0, y: self.frame.size.height))
