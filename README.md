@@ -1,14 +1,13 @@
-<<<<<<< HEAD
 # WaterWaveAnimation
 =======
 # WaterWave-swift
-    Easily add wave animation.
+    Easily add wave animation, with invertion background
 
 ### Installation
     You only need drag WaterWave.swift to your project.
 
 ### Support
-    Minimum support iOS version: iOS 6.0
+    Minimum support iOS version: iOS 8.0
 
 ### Usage
 ```swift
@@ -31,4 +30,3 @@
 
 ### License
     WaterWave-swift is available under the MIT License. See the LICENSE file for more info.
->>>>>>> init
