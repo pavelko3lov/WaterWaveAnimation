@@ -1,9 +1,6 @@
 //
 //  AppDelegate.swift
-//  LxWaveLayerDemo
-//
-//  Created by DeveloperLx on 15/12/12.
-//  Copyright © 2015年 DeveloperLx. All rights reserved.
+//  WaterWave
 //
 
 import UIKit

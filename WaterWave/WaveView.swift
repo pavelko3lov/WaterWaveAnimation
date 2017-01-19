@@ -150,7 +150,8 @@ open class WaveView: UIView {
             let maskY = waveHeight * CGFloat(sinf(waveCurvature_f * Float(x) + offset_f + Float(phase) * Float(2 * M_PI)))
             maskpath.addLine(to: CGPoint(x: CGFloat(x), y: maskY - waveHeight))
             
-            let imagePoint = convert(CGPoint(x: CGFloat(x), y: frame.size.height - vHeight + realY - waveHeight), to: imageView)
+            let commonWave = max(realY, maskY) - waveHeight
+            let imagePoint = convert(CGPoint(x: CGFloat(x), y: frame.size.height - vHeight + commonWave), to: imageView)
             if imagePoint.x >= 0 && imagePoint.x <= imageView.bounds.size.width {
                 maskImagePath.addLine(to: imagePoint)
             }
