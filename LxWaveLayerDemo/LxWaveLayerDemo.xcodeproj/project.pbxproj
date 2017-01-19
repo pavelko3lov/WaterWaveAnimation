@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		280931201E30AD82006B390C /* YXWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809311F1E30AD82006B390C /* YXWaveView.swift */; };
+		280931201E30AD82006B390C /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809311F1E30AD82006B390C /* WaveView.swift */; };
 		B6A0CAF21C1BD8B5001B4CDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A0CAF11C1BD8B5001B4CDE /* AppDelegate.swift */; };
 		B6A0CAF41C1BD8B5001B4CDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A0CAF31C1BD8B5001B4CDE /* ViewController.swift */; };
 		B6A0CAF71C1BD8B5001B4CDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A0CAF51C1BD8B5001B4CDE /* Main.storyboard */; };
@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2809311F1E30AD82006B390C /* YXWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YXWaveView.swift; sourceTree = "<group>"; };
+		2809311F1E30AD82006B390C /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		B6A0CAEE1C1BD8B5001B4CDE /* LxWaveLayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LxWaveLayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A0CAF11C1BD8B5001B4CDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6A0CAF31C1BD8B5001B4CDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 			children = (
 				B6A0CAF11C1BD8B5001B4CDE /* AppDelegate.swift */,
 				B6A0CAF31C1BD8B5001B4CDE /* ViewController.swift */,
-				2809311F1E30AD82006B390C /* YXWaveView.swift */,
+				2809311F1E30AD82006B390C /* WaveView.swift */,
 				B6A0CAF51C1BD8B5001B4CDE /* Main.storyboard */,
 				B6A0CAF81C1BD8B5001B4CDE /* Assets.xcassets */,
 				B6A0CAFA1C1BD8B5001B4CDE /* LaunchScreen.storyboard */,
@@ -145,7 +145,7 @@
 			files = (
 				B6A0CB061C1C9133001B4CDE /* LxWaveLayer.swift in Sources */,
 				B6A0CAF41C1BD8B5001B4CDE /* ViewController.swift in Sources */,
-				280931201E30AD82006B390C /* YXWaveView.swift in Sources */,
+				280931201E30AD82006B390C /* WaveView.swift in Sources */,
 				B6A0CAF21C1BD8B5001B4CDE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

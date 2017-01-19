@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cb-eM-mF0">
                                 <rect key="frame" x="30" y="50" width="315" height="587"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="150" minValue="0.0" maxValue="315" translatesAutoresizingMaskIntoConstraints="NO" id="bjS-Oa-QKH">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bjS-Oa-QKH">
                                         <rect key="frame" x="113.5" y="6" width="173.5" height="31"/>
                                         <connections>
                                             <action selector="heightSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="VrL-Nc-LUU"/>
@@ -49,13 +49,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="MbA-Yl-D2v">
-                                        <rect key="frame" x="112" y="87.5" width="175" height="31"/>
+                                        <rect key="frame" x="158" y="87.5" width="129" height="31"/>
                                         <connections>
                                             <action selector="periodSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="p83-SP-fBn"/>
                                         </connections>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iX1-GC-SgE">
-                                        <rect key="frame" x="30" y="92" width="54" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WaveLength:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iX1-GC-SgE">
+                                        <rect key="frame" x="30" y="92" width="100" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -147,6 +147,7 @@
                     </view>
                     <connections>
                         <outlet property="_waveContainerView" destination="4cb-eM-mF0" id="vxM-PI-qww"/>
+                        <outlet property="waveHeight" destination="bjS-Oa-QKH" id="Kjy-uz-5dn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
