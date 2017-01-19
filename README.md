@@ -1,11 +1,11 @@
 <<<<<<< HEAD
 # WaterWaveAnimation
 =======
-# LxWaveLayer-swift
+# WaterWave-swift
     Easily add wave animation.
 
 ### Installation
-    You only need drag LxWaveLayer.swift to your project.
+    You only need drag WaterWave.swift to your project.
 
 ### Support
     Minimum support iOS version: iOS 6.0
@@ -13,25 +13,22 @@
 ### Usage
 ```swift
     //  setup
-    _waveLayer = LxWaveLayer()
-    _waveLayer.deployOnView(SUPER_VIEW)
+    waveView = WaveView(frame: fram, color: UIColor(red: 0.098, green: 0.651, blue: 0.996, alpha: 1))
+    waveView.layer.cornerRadius = _waveContainerView.bounds.size.width / 2
+    waveView.layer.masksToBounds = true
+    view.addSubview(waveView)
 
     //  begin animation
-    _waveLayer.beginWaveAnimation()
+    waveView.start()
 
     //  stop animation
-    [_waveLayer stopWaveAnimation];
+    waveView.stop()
 
     //  adjust property
-    _waveLayer.fillColor = WAVE_COLOR.CGColor
-    _waveLayer.waveHeight = 180
-    _waveLayer.waveAmplitude = 6
-    _waveLayer.wavePeriod = 270
-    _waveLayer.waveSpeed = 240
-    _waveLayer.wavePhase = 80
+    waveView.fullness = 0.5
 
 ```
 
 ### License
-    LxWaveLayer-swift is available under the MIT License. See the LICENSE file for more info.
+    WaterWave-swift is available under the MIT License. See the LICENSE file for more info.
 >>>>>>> init
