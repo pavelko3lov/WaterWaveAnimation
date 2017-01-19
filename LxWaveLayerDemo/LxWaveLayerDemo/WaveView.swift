@@ -5,9 +5,6 @@
 import UIKit
 
 open class WaveView: UIView {
-
-    /// float over View
-    open var overView: UIView?
     /// wave timmer
     fileprivate var timer: CADisplayLink?
     /// real aave
@@ -30,7 +27,6 @@ open class WaveView: UIView {
         self.backgroundColor = UIColor.clear
     }
     
-//    var maskLayer: CAShapeLayer = CAShapeLayer()
     var contentImageLayer = CALayer()
     let imageView = UIImageView(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
     let maskImageLayer = CAShapeLayer()
@@ -41,40 +37,18 @@ open class WaveView: UIView {
         realWaveLayer.fillColor = color.withAlphaComponent(0.4).cgColor
         maskWaveLayer.fillColor = color.withAlphaComponent(0.4).cgColor
         
-        self.layer.addSublayer(self.realWaveLayer)
-        self.layer.addSublayer(self.maskWaveLayer)
-        
-        
-        
-        
-        
-        
-//        contentImageLayer.contents = UIImage(named: "iconError2")?.cgImage
-//        contentImageLayer.frame = CGRect(x: 50, y: 50, width: 200, height: 200)
-//        contentImageLayer.position = CGPoint(x: bounds.size.width / 2, y: bounds.size.height / 2)
-//        layer.addSublayer(contentImageLayer)
+        layer.addSublayer(realWaveLayer)
+        layer.addSublayer(maskWaveLayer)
         
         let image = UIImage(named: "iconError2")?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = UIColor.white
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
         imageView.center = CGPoint(x: bounds.size.width / 2, y: bounds.size.height / 2)
-        imageView.clipsToBounds = true
-        self.addSubview(imageView)
-//        imageView.backgroundColor = UIColor.yellow
+        addSubview(imageView)
         
-//        maskImageLayer.frame = imageView.bounds
-//        imageView.layer.mask = maskImageLayer
-        
-//        print("imageView", imageView.frame, maskImage.frame)
-//        let rect = CGRect(x: 50, y: 50, width: 400, height: 400)
-//        let path = UIBezierPath(rect: rect)
-//        maskLayer.path = path.cgPath
-//        
-//        maskLayer.bounds = rect
-//        maskWaveLayer.mask = maskLayer
-//        maskWaveLayer.masksToBounds = true
-//        addSubview(imageView)
+        maskImageLayer.frame = imageView.bounds
+        imageView.layer.mask = maskImageLayer
     }
     
     open func start() {
@@ -143,58 +117,44 @@ open class WaveView: UIView {
     func wave(_ displayLink: CADisplayLink?) {
         randomWave()
         
-//        if starting {
-//        
-//            if vHeight < frame.size.height * fullness {
-//                vHeight += frame.size.height / 100
-//            } else {
-//                starting = false
-//            }
-//        } else {
+        if starting {
+            if vHeight < frame.size.height * fullness {
+                vHeight += frame.size.height / 100
+            } else {
+                starting = false
+            }
+        } else {
             vHeight = self.frame.size.height * fullness
-//        }
+        }
         setWaterHeight()
         
         offset += waveSpeed
         if offset > 32000 { offset = 1000 }
         
-        let height = CGFloat(waveHeight)
         
         let path = CGMutablePath()
-        path.move(to: CGPoint(x: 0, y: height))
+        path.move(to: CGPoint(x: 0, y: waveHeight))
         let maskpath = CGMutablePath()
-        maskpath.move(to: CGPoint(x: 0, y: height))
+        maskpath.move(to: CGPoint(x: 0, y: waveHeight))
         
         let maskImagePath = UIBezierPath()
-        maskImagePath.move(to: CGPoint(x: 0, y: imageView.frame.size.height / 2))
-//        maskImagePath.move(to: imageView.convert(CGPoint(x: 0, y: vHeight), from: imageView.superview))
-//        print("imageView.convert(CGPoint(x: 0, y: height), from: imageView.superview)", imageView.convert(CGPoint(x: 0, y: vHeight + waveHeight * 20), from: imageView.superview))
-//        print("111", CGPoint(x: 0, y: imageView.frame.size.height / 2))
+        maskImagePath.move(to: convert(CGPoint(x: 0, y: frame.size.height - vHeight + waveHeight), to: imageView))
         
         let offset_f: Float = Float(offset * 0.045)
         let waveCurvature_f = Float(0.01 * waveLength)
         
         for x in 0...Int(frame.width) {
-            var y: CGFloat = height * CGFloat(sinf(waveCurvature_f * Float(x) + offset_f))
-            path.addLine(to: CGPoint(x: CGFloat(x), y: y - waveHeight))
+            let realY: CGFloat = waveHeight * CGFloat(sinf(waveCurvature_f * Float(x) + offset_f))
+            path.addLine(to: CGPoint(x: CGFloat(x), y: realY - waveHeight))
             
-            y = height * CGFloat(sinf(waveCurvature_f * Float(x) + offset_f + Float(phase) * Float(2 * M_PI)))
-            maskpath.addLine(to: CGPoint(x: CGFloat(x), y: y - waveHeight))
+            let maskY = waveHeight * CGFloat(sinf(waveCurvature_f * Float(x) + offset_f + Float(phase) * Float(2 * M_PI)))
+            maskpath.addLine(to: CGPoint(x: CGFloat(x), y: maskY - waveHeight))
             
-            
-            
-//            print(CGPoint(x: CGFloat(x), y: y - waveHeight), imageView.convert(CGPoint(x: CGFloat(x), y: y - waveHeight), from: imageView.superview))
-//            maskImagePath.addLine(to: imageView.convert(CGPoint(x: CGFloat(x), y: y - waveHeight), from: imageView.superview))
+            let imagePoint = convert(CGPoint(x: CGFloat(x), y: frame.size.height - vHeight + realY - waveHeight), to: imageView)
+            if imagePoint.x >= 0 && imagePoint.x <= imageView.bounds.size.width {
+                maskImagePath.addLine(to: imagePoint)
+            }
         }
-        
-        
-        for x in 0...Int(imageView.frame.width) {
-            let y: CGFloat = height * CGFloat(sinf(waveCurvature_f * Float(x) + offset_f)) + imageView.frame.size.height / 2
-            maskImagePath.addLine(to: CGPoint(x: CGFloat(x), y: y - waveHeight / 2))
-        }
-        
-//        maskImagePath.addLine(to: CGPoint(x: imageView.frame.size.width, y: imageView.frame.size.height / 2))
-//        print("waveHeight * 4", waveHeight * 4)
         
         path.addLine(to: CGPoint(x: frame.width, y: self.frame.size.height))
         path.addLine(to: CGPoint(x: 0, y: self.frame.size.height))
@@ -208,90 +168,19 @@ open class WaveView: UIView {
         maskpath.closeSubpath()
         self.maskWaveLayer.path = maskpath
         
-        
         maskImagePath.addLine(to: CGPoint(x: imageView.frame.size.width, y: imageView.frame.size.height))
         maskImagePath.addLine(to: CGPoint(x: 0, y: imageView.frame.size.height))
-//        maskImagePath.addLine(to: imageView.convert(CGPoint(x: frame.width, y: self.frame.size.height), from: imageView.superview))
-//            print(">>>", imageView.convert(CGPoint(x: frame.width, y: self.frame.size.height), from: imageView.superview))
-//        maskImagePath.addLine(to: imageView.convert(CGPoint(x: 0, y: self.frame.size.height), from: imageView.superview))
-
-        
         maskImagePath.close()
         
-        let maskImageLayer2 = CAShapeLayer()
-        maskImageLayer2.frame = imageView.bounds
-        maskImageLayer2.path = maskImagePath.cgPath
-        imageView.layer.mask = maskImageLayer2
-//        updateMasks(maskImagePath)
-        
-        
-//        if (overView != nil) {
-//            let centX = self.bounds.size.width/2
-//            let centY = height * CGFloat(sinf(waveCurvature_f * Float(centX)  + offset_f))
-//            let center = CGPoint(x: centX , y: centY + self.bounds.size.height - overView!.bounds.size.height/2 - _waveHeight - 1 )
-//            overView?.center = center
-//        }
+        maskImageLayer.path = maskImagePath.cgPath
     }
     
-    var oldPath: UIBezierPath?
-    func updateMasks(_ path: UIBezierPath) {
-        
-        let animation = CABasicAnimation(keyPath: "path")
-        animation.duration = 0
-        
-        // Your new shape here
-        animation.fromValue = oldPath?.cgPath
-        animation.toValue = path.cgPath
-        
-//        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        
-        // The next two line preserves the final shape of animation,
-        // if you remove it the shape will return to the original shape after the animation finished
-//        animation.fillMode = kCAFillModeForwards
-//        animation.isRemovedOnCompletion = false
-        
-//        shapeLayer.addAnimation(animation, forKey: nil)
-        animation.duration = 0.0
-        animation.fillMode = kCAFillModeForwards
-        animation.isRemovedOnCompletion = false
-        
-        imageView.layer.mask?.add(animation, forKey: "morph shape back and forth")
-        imageView.layer.mask?.speed = 0
-        
-        oldPath = path
-        // update the mask
-//        maskImage.frame = imageView.bounds
-        
-        // if the bounds change happens within an animation, also animate the mask path
-//        if boundsAnimation == nil {
-//            self.maskImage.path = path.cgPath
-//        } else if let boundsAnimation = boundsAnimation {
-//            // copying the original animation allows us to keep all animation settings
-//            let animation: CABasicAnimation = boundsAnimation
-//            animation.keyPath = "path"
-//            
-////            CGPathRef newPath = [self createMaskPath];
-//            animation.fromValue = maskImage.path
-//            animation.toValue = path.cgPath
-//            
-//            maskImage.path = path.cgPath
-//            
-//            maskImage.add(animation, forKey: "path")
-//        }
-    }
-    
-    func setWaterHeight() {
+    private func setWaterHeight() {
         maskWaveLayer.frame.origin.y = self.frame.size.height - vHeight
         realWaveLayer.frame.origin.y = self.frame.size.height - vHeight
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    open func addOverView(_ view: UIView) {
-        overView = view
-        overView?.center = self.center
-        overView?.frame.origin.y = self.frame.height - (overView?.frame.height)!
-        self.addSubview(overView!)
     }
 }

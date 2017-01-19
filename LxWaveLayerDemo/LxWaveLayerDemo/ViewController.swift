@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
         
-//        view.addSubview(imageView)
+        view.addSubview(imageView)
 
         
         waveView = WaveView(frame: fram, color: UIColor(red: 0.098, green: 0.651, blue: 0.996, alpha: 1))
