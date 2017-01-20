@@ -15,7 +15,9 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         waterWaveCoordinator = WaterWaveCoordinator(waveContainerView)
-        waterWaveCoordinator?.beginTimer(60)
+//        waterWaveCoordinator?.beginTimer(60)
+        waterWaveCoordinator?.waveView.fullness = 1.0
+        waterWaveCoordinator?.waveView.start(false)
     }
     
     @IBOutlet weak var waveHeight: UISlider!

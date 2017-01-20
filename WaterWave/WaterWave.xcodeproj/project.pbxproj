@@ -11,6 +11,7 @@
 		280931351E31F718006B390C /* InvertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280931341E31F718006B390C /* InvertView.xib */; };
 		280931371E31FDA0006B390C /* TimerCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280931361E31FDA0006B390C /* TimerCounter.swift */; };
 		280931391E320150006B390C /* WaterWaveCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280931381E320150006B390C /* WaterWaveCoordinator.swift */; };
+		2809313B1E320800006B390C /* BubbleCoordinater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809313A1E320800006B390C /* BubbleCoordinater.swift */; };
 		C467C4681E31695400567239 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C4641E31695400567239 /* AppDelegate.swift */; };
 		C467C4691E31695400567239 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C467C4651E31695400567239 /* Info.plist */; };
 		C467C46A1E31695400567239 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C4661E31695400567239 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 		280931341E31F718006B390C /* InvertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvertView.xib; sourceTree = SOURCE_ROOT; };
 		280931361E31FDA0006B390C /* TimerCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerCounter.swift; sourceTree = SOURCE_ROOT; };
 		280931381E320150006B390C /* WaterWaveCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterWaveCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		2809313A1E320800006B390C /* BubbleCoordinater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCoordinater.swift; sourceTree = SOURCE_ROOT; };
 		B6A0CAEE1C1BD8B5001B4CDE /* WaterWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C467C4641E31695400567239 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C467C4651E31695400567239 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
@@ -73,6 +75,7 @@
 				C467C4661E31695400567239 /* ViewController.swift */,
 				C467C4671E31695400567239 /* WaveView.swift */,
 				280931381E320150006B390C /* WaterWaveCoordinator.swift */,
+				2809313A1E320800006B390C /* BubbleCoordinater.swift */,
 				280931361E31FDA0006B390C /* TimerCounter.swift */,
 				280931321E31F70D006B390C /* InvertView.swift */,
 				280931341E31F718006B390C /* InvertView.xib */,
@@ -160,6 +163,7 @@
 				C467C46A1E31695400567239 /* ViewController.swift in Sources */,
 				C467C46B1E31695400567239 /* WaveView.swift in Sources */,
 				280931331E31F70D006B390C /* InvertView.swift in Sources */,
+				2809313B1E320800006B390C /* BubbleCoordinater.swift in Sources */,
 				C467C4681E31695400567239 /* AppDelegate.swift in Sources */,
 				280931391E320150006B390C /* WaterWaveCoordinator.swift in Sources */,
 			);

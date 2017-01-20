@@ -29,6 +29,12 @@ class WaterWaveCoordinator: TimerCounterDelegate {
         container.addSubview(waveView)
         
         invertView.center = waveView.center
+        
+        
+        
+        for bubble in BubbleCoordinater(CGSize(width: a, height: a)).bubbles {
+            waveView.addSubview(bubble)
+        }
     }
     
     
@@ -50,5 +56,9 @@ class WaterWaveCoordinator: TimerCounterDelegate {
         if self.counter != 0 {
             waveView.fullness = CGFloat(counter) / CGFloat(self.counter)
         }
+    }
+    
+    func beginBubbles() {
+        
     }
 }
