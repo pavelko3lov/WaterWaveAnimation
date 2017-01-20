@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280931331E31F70D006B390C /* InvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280931321E31F70D006B390C /* InvertView.swift */; };
+		280931351E31F718006B390C /* InvertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280931341E31F718006B390C /* InvertView.xib */; };
 		C467C4681E31695400567239 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C4641E31695400567239 /* AppDelegate.swift */; };
 		C467C4691E31695400567239 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C467C4651E31695400567239 /* Info.plist */; };
 		C467C46A1E31695400567239 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C4661E31695400567239 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		280931321E31F70D006B390C /* InvertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvertView.swift; sourceTree = SOURCE_ROOT; };
+		280931341E31F718006B390C /* InvertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvertView.xib; sourceTree = SOURCE_ROOT; };
 		B6A0CAEE1C1BD8B5001B4CDE /* WaterWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C467C4641E31695400567239 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C467C4651E31695400567239 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
@@ -64,6 +68,8 @@
 				C467C4651E31695400567239 /* Info.plist */,
 				C467C4661E31695400567239 /* ViewController.swift */,
 				C467C4671E31695400567239 /* WaveView.swift */,
+				280931321E31F70D006B390C /* InvertView.swift */,
+				280931341E31F718006B390C /* InvertView.xib */,
 			);
 			name = WaterWave;
 			path = LxWaveLayerDemo;
@@ -131,6 +137,7 @@
 			files = (
 				C467C4711E31695D00567239 /* Main.storyboard in Resources */,
 				C467C4691E31695400567239 /* Info.plist in Resources */,
+				280931351E31F718006B390C /* InvertView.xib in Resources */,
 				C467C4701E31695D00567239 /* LaunchScreen.storyboard in Resources */,
 				C467C4751E31697000567239 /* Assets.xcassets in Resources */,
 			);
@@ -145,6 +152,7 @@
 			files = (
 				C467C46A1E31695400567239 /* ViewController.swift in Sources */,
 				C467C46B1E31695400567239 /* WaveView.swift in Sources */,
+				280931331E31F70D006B390C /* InvertView.swift in Sources */,
 				C467C4681E31695400567239 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

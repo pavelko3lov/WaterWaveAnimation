@@ -28,7 +28,7 @@ open class WaveView: UIView {
     }
     
     var contentImageLayer = CALayer()
-    let imageView = UIImageView(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
+    let invertView = InvertView.instanceFromNib()
     let maskImageLayer = CAShapeLayer()
     
     public convenience init(frame: CGRect, color:UIColor) {
@@ -38,17 +38,17 @@ open class WaveView: UIView {
         maskWaveLayer.fillColor = color.withAlphaComponent(0.4).cgColor
         
         layer.addSublayer(realWaveLayer)
-        layer.addSublayer(maskWaveLayer)
+        layer.addSublayer(maskWaveLayer)        
         
-        let image = UIImage(named: "iconError2")?.withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = UIColor.white
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFit
-        imageView.center = CGPoint(x: bounds.size.width / 2, y: bounds.size.height / 2)
-        addSubview(imageView)
+        invertView.frame = CGRect(x: 50, y: 50, width: 200, height: 200)
+        invertView.imageView.image = UIImage(named: "iconError2")?.withRenderingMode(.alwaysTemplate)
+        invertView.imageView.tintColor = UIColor.white
+        invertView.bottomLabel.textColor = UIColor.white
+        invertView.center = CGPoint(x: bounds.size.width / 2, y: bounds.size.height / 2)
+        addSubview(invertView)
         
-        maskImageLayer.frame = imageView.bounds
-        imageView.layer.mask = maskImageLayer
+        maskImageLayer.frame = invertView.bounds
+        invertView.layer.mask = maskImageLayer
     }
     
     open func start() {
@@ -138,7 +138,7 @@ open class WaveView: UIView {
         maskpath.move(to: CGPoint(x: 0, y: waveHeight))
         
         let maskImagePath = UIBezierPath()
-        maskImagePath.move(to: convert(CGPoint(x: 0, y: frame.size.height - vHeight + waveHeight), to: imageView))
+        maskImagePath.move(to: convert(CGPoint(x: 0, y: frame.size.height - vHeight + waveHeight), to: invertView))
         
         let offset_f: Float = Float(offset * 0.045)
         let waveCurvature_f = Float(0.01 * waveLength)
@@ -151,8 +151,8 @@ open class WaveView: UIView {
             maskpath.addLine(to: CGPoint(x: CGFloat(x), y: maskY - waveHeight))
             
             let commonWave = max(realY, maskY) - waveHeight
-            let imagePoint = convert(CGPoint(x: CGFloat(x), y: frame.size.height - vHeight + commonWave), to: imageView)
-            if imagePoint.x >= 0 && imagePoint.x <= imageView.bounds.size.width {
+            let imagePoint = convert(CGPoint(x: CGFloat(x), y: frame.size.height - vHeight + commonWave), to: invertView)
+            if imagePoint.x >= 0 && imagePoint.x <= invertView.bounds.size.width {
                 maskImagePath.addLine(to: imagePoint)
             }
         }
@@ -169,8 +169,8 @@ open class WaveView: UIView {
         maskpath.closeSubpath()
         self.maskWaveLayer.path = maskpath
         
-        maskImagePath.addLine(to: CGPoint(x: imageView.frame.size.width, y: imageView.frame.size.height))
-        maskImagePath.addLine(to: CGPoint(x: 0, y: imageView.frame.size.height))
+        maskImagePath.addLine(to: CGPoint(x: invertView.frame.size.width, y: invertView.frame.size.height))
+        maskImagePath.addLine(to: CGPoint(x: 0, y: invertView.frame.size.height))
         maskImagePath.close()
         
         maskImageLayer.path = maskImagePath.cgPath
