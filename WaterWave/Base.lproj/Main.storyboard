@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LxWaveLayerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WaterWave" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -146,7 +146,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="_waveContainerView" destination="4cb-eM-mF0" id="vxM-PI-qww"/>
+                        <outlet property="waveContainerView" destination="4cb-eM-mF0" id="5Ul-ZN-f6F"/>
                         <outlet property="waveHeight" destination="bjS-Oa-QKH" id="Kjy-uz-5dn"/>
                     </connections>
                 </viewController>

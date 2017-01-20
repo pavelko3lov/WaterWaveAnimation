@@ -7,68 +7,49 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var _waveContainerView: UIView!
+    @IBOutlet weak var waveContainerView: UIView!
     
-    var waveView: WaveView!
+    var waterWaveCoordinator: WaterWaveCoordinator?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let a = _waveContainerView.bounds.size.width
-                
-        let fram = CGRect(x: 30, y: _waveContainerView.bounds.size.height - _waveContainerView.bounds.size.width + 50, width: a, height: a)
-        
-        let invertView = InvertView.instanceFromNib()
-        invertView.frame = CGRect(x: 50, y: 50, width: 200, height: 200)
-        invertView.imageView.image = UIImage(named: "iconError2")?.withRenderingMode(.alwaysTemplate)
-        invertView.imageView.tintColor = UIColor.black
-        view.addSubview(invertView)
-
-        
-        waveView = WaveView(frame: fram, color: UIColor(red: 0.098, green: 0.651, blue: 0.996, alpha: 1))
-        waveView.layer.cornerRadius = _waveContainerView.bounds.size.width / 2
-        waveView.layer.masksToBounds = true
-        waveView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
-        view.addSubview(waveView)
-        waveView.fullness = 0.5
-        waveHeight.value = Float(waveView.fullness)
-        waveView.start()
-        
-        invertView.center = waveView.center
+        waterWaveCoordinator = WaterWaveCoordinator(waveContainerView)
+        waterWaveCoordinator?.beginTimer(60)
     }
     
     @IBOutlet weak var waveHeight: UISlider!
     
     @IBAction func heightSliderValueChanged(_ sender: UISlider) {
         print(#function, CGFloat(sender.value))
-        waveView.fullness = CGFloat(sender.value)
+        waterWaveCoordinator?.waveView.fullness = CGFloat(sender.value)
     }
 
     @IBAction func amplitideSliderValueChanged(_ sender: UISlider) {
         print(#function, CGFloat(sender.value))
-        waveView.waveHeight = CGFloat(sender.value)
+        waterWaveCoordinator?.waveView.waveHeight = CGFloat(sender.value)
     }
 
     @IBAction func periodSliderValueChanged(_ sender: UISlider) {
         print(#function, CGFloat(sender.value))
-        waveView.waveLength = CGFloat(sender.value)
+        waterWaveCoordinator?.waveView.waveLength = CGFloat(sender.value)
     }
     
     @IBAction func speedSliderValueChanged(_ sender: UISlider) {
         print(#function, CGFloat(sender.value))
-        waveView.waveSpeed = CGFloat(sender.value)
+        waterWaveCoordinator?.waveView.waveSpeed = CGFloat(sender.value)
     }
     
     @IBAction func phaseValueChanged(_ sender: UISlider) {
         print(#function, CGFloat(sender.value))
-        waveView.phase = CGFloat(sender.value)
+        waterWaveCoordinator?.waveView.phase = CGFloat(sender.value)
     }
 
     @IBAction func startOrStopSwitchValueChanged(_ sender: UISwitch) {
         if sender.isOn {
-            waveView.start()
+            waterWaveCoordinator?.waveView.start()
         } else {
-            waveView.stop()
+            waterWaveCoordinator?.waveView.stop()
         }
     }
 }

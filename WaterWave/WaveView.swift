@@ -41,9 +41,7 @@ open class WaveView: UIView {
         layer.addSublayer(maskWaveLayer)        
         
         invertView.frame = CGRect(x: 50, y: 50, width: 200, height: 200)
-        invertView.imageView.image = UIImage(named: "iconError2")?.withRenderingMode(.alwaysTemplate)
-        invertView.imageView.tintColor = UIColor.white
-        invertView.bottomLabel.textColor = UIColor.white
+        invertView.setTintColour(UIColor.white)
         invertView.center = CGPoint(x: bounds.size.width / 2, y: bounds.size.height / 2)
         addSubview(invertView)
         
@@ -51,11 +49,10 @@ open class WaveView: UIView {
         invertView.layer.mask = maskImageLayer
     }
     
-    open func start() {
+    open func start(_ withStarting: Bool=true) {
         if !starting {
             stop()
-            starting = true
-            stoping = false
+            starting = withStarting
 
             timer = CADisplayLink(target: self, selector: #selector(wave(_:)))
             timer?.frameInterval = 2
@@ -64,14 +61,8 @@ open class WaveView: UIView {
     }
 
     open func stop() {
-        if (timer != nil) {
-            timer?.invalidate()
-            timer = nil
-        }
-        if !stoping {
-            starting = false
-            stoping = true
-        }
+        timer?.invalidate()
+        timer = nil
     }
     
     var fullness: CGFloat = 0
