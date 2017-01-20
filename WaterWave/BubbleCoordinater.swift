@@ -51,7 +51,7 @@ class BubbleCoordinater {
         xAnimation.timeOffset = delay
         xAnimation.repeatCount = Float.infinity
         xAnimation.autoreverses = true
-        xAnimation.fromValue = bubble.center.x
+        xAnimation.fromValue = bubble.center.x - radius * 2
         xAnimation.toValue = bubble.center.x + radius * 2
         bubble.layer.add(xAnimation, forKey: nil)
         
