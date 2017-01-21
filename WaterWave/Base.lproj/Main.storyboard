@@ -91,28 +91,40 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BuG-uU-ydd">
-                                        <rect key="frame" x="-0.5" y="293.5" width="315" height="293.5"/>
-                                    </imageView>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTo-7d-LPp">
+                                        <rect key="frame" x="0.0" y="293.5" width="315" height="293.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WMf-b4-cy4">
+                                                <rect key="frame" x="-158" y="-146.5" width="630" height="587"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.29803921568627451" green="0.66274509803921566" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="WMf-b4-cy4" firstAttribute="height" secondItem="rTo-7d-LPp" secondAttribute="height" multiplier="2" id="0Ik-kG-JUQ"/>
+                                            <constraint firstItem="WMf-b4-cy4" firstAttribute="centerX" secondItem="rTo-7d-LPp" secondAttribute="centerX" id="9oB-o4-LRN"/>
+                                            <constraint firstItem="WMf-b4-cy4" firstAttribute="width" secondItem="rTo-7d-LPp" secondAttribute="width" multiplier="2" id="X2e-xm-qmt"/>
+                                            <constraint firstItem="WMf-b4-cy4" firstAttribute="centerY" secondItem="rTo-7d-LPp" secondAttribute="centerY" id="eTz-On-ATP"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.95503771305084229" green="0.95503771305084229" blue="0.95503771305084229" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="iX1-GC-SgE" firstAttribute="centerY" secondItem="MbA-Yl-D2v" secondAttribute="centerY" id="1Na-zk-So2"/>
                                     <constraint firstItem="MbA-Yl-D2v" firstAttribute="leading" secondItem="iX1-GC-SgE" secondAttribute="trailing" constant="30" id="29i-Qx-68Y"/>
                                     <constraint firstItem="bjS-Oa-QKH" firstAttribute="leading" secondItem="rBB-j7-wMV" secondAttribute="trailing" constant="30" id="4fq-lz-zf9"/>
                                     <constraint firstAttribute="trailing" secondItem="vdw-sV-fF2" secondAttribute="trailing" constant="30" id="9u6-wM-tDd"/>
                                     <constraint firstItem="h68-4j-cyR" firstAttribute="centerY" secondItem="vdw-sV-fF2" secondAttribute="centerY" id="D71-cF-2dO"/>
-                                    <constraint firstItem="BuG-uU-ydd" firstAttribute="height" secondItem="4cb-eM-mF0" secondAttribute="height" multiplier="0.5" id="Fw9-v0-dLN"/>
+                                    <constraint firstItem="rTo-7d-LPp" firstAttribute="centerX" secondItem="4cb-eM-mF0" secondAttribute="centerX" id="HpT-zO-MRf"/>
                                     <constraint firstItem="h68-4j-cyR" firstAttribute="top" secondItem="iX1-GC-SgE" secondAttribute="bottom" constant="20" id="NX7-oE-kWA"/>
+                                    <constraint firstItem="rTo-7d-LPp" firstAttribute="height" secondItem="4cb-eM-mF0" secondAttribute="height" multiplier="0.5" id="Q1a-uq-MEv"/>
                                     <constraint firstAttribute="trailing" secondItem="W22-O7-wy4" secondAttribute="trailing" constant="30" id="S8d-x3-2a9"/>
-                                    <constraint firstItem="BuG-uU-ydd" firstAttribute="centerX" secondItem="4cb-eM-mF0" secondAttribute="centerX" id="TZ6-6V-iYb"/>
+                                    <constraint firstAttribute="bottom" secondItem="rTo-7d-LPp" secondAttribute="bottom" id="TZq-9M-3DP"/>
                                     <constraint firstItem="TGF-M3-7Jb" firstAttribute="centerY" secondItem="W22-O7-wy4" secondAttribute="centerY" id="UgJ-70-uGO"/>
                                     <constraint firstItem="iX1-GC-SgE" firstAttribute="leading" secondItem="4cb-eM-mF0" secondAttribute="leading" constant="30" id="V6W-LL-MiQ"/>
                                     <constraint firstItem="EM1-LZ-842" firstAttribute="top" secondItem="h68-4j-cyR" secondAttribute="bottom" constant="20" id="VwA-kR-64v"/>
                                     <constraint firstItem="h68-4j-cyR" firstAttribute="leading" secondItem="4cb-eM-mF0" secondAttribute="leading" constant="30" id="WO2-Xd-4R1"/>
                                     <constraint firstItem="W22-O7-wy4" firstAttribute="leading" secondItem="TGF-M3-7Jb" secondAttribute="trailing" constant="30" id="WVx-Y7-o2S"/>
                                     <constraint firstItem="iX1-GC-SgE" firstAttribute="top" secondItem="TGF-M3-7Jb" secondAttribute="bottom" constant="20" id="Wd1-gZ-BxT"/>
-                                    <constraint firstAttribute="bottom" secondItem="BuG-uU-ydd" secondAttribute="bottom" id="YRs-sN-pjc"/>
                                     <constraint firstAttribute="trailing" secondItem="bjS-Oa-QKH" secondAttribute="trailing" constant="30" id="Yfr-Iz-15n"/>
                                     <constraint firstAttribute="trailing" secondItem="MbA-Yl-D2v" secondAttribute="trailing" constant="30" id="a3g-yf-pv3"/>
                                     <constraint firstItem="rBB-j7-wMV" firstAttribute="leading" secondItem="4cb-eM-mF0" secondAttribute="leading" constant="30" id="aAw-4l-0cx"/>
@@ -123,12 +135,12 @@
                                     <constraint firstAttribute="height" constant="128" id="k0L-9n-i1J"/>
                                     <constraint firstItem="rBB-j7-wMV" firstAttribute="centerY" secondItem="bjS-Oa-QKH" secondAttribute="centerY" id="kMU-ya-eeu"/>
                                     <constraint firstItem="rBB-j7-wMV" firstAttribute="top" secondItem="4cb-eM-mF0" secondAttribute="top" constant="10" id="lBR-pi-aaY"/>
-                                    <constraint firstItem="BuG-uU-ydd" firstAttribute="width" secondItem="4cb-eM-mF0" secondAttribute="width" id="lQl-pX-9Z4"/>
                                     <constraint firstItem="zEi-Id-6uo" firstAttribute="leading" secondItem="EM1-LZ-842" secondAttribute="trailing" constant="30" id="ma2-MK-ORT"/>
                                     <constraint firstItem="EM1-LZ-842" firstAttribute="leading" secondItem="h68-4j-cyR" secondAttribute="leading" id="msl-JQ-pYe"/>
                                     <constraint firstItem="TGF-M3-7Jb" firstAttribute="leading" secondItem="4cb-eM-mF0" secondAttribute="leading" constant="30" id="q4T-o4-IaF"/>
                                     <constraint firstItem="vdw-sV-fF2" firstAttribute="leading" secondItem="h68-4j-cyR" secondAttribute="trailing" constant="30" id="q8i-Mu-wRg"/>
                                     <constraint firstItem="3Ew-pd-KEp" firstAttribute="top" secondItem="zEi-Id-6uo" secondAttribute="bottom" constant="20" id="vNX-GU-st7"/>
+                                    <constraint firstItem="rTo-7d-LPp" firstAttribute="width" secondItem="4cb-eM-mF0" secondAttribute="width" id="zUr-nG-oRu"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -154,7 +166,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="tailImageView" destination="BuG-uU-ydd" id="FCp-k3-guT"/>
+                        <outlet property="tileImageView" destination="WMf-b4-cy4" id="6Vn-Vp-Ty0"/>
                         <outlet property="waveContainerView" destination="4cb-eM-mF0" id="5Ul-ZN-f6F"/>
                         <outlet property="waveHeight" destination="bjS-Oa-QKH" id="Kjy-uz-5dn"/>
                     </connections>
