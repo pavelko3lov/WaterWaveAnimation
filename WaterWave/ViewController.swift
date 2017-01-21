@@ -9,15 +9,17 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var waveContainerView: UIView!
     
+    @IBOutlet weak var tailImageView: UIImageView!
+    
     var waterWaveCoordinator: WaterWaveCoordinator?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        waterWaveCoordinator = WaterWaveCoordinator(waveContainerView)
-//        waterWaveCoordinator?.beginTimer(60)
-        waterWaveCoordinator?.waveView.fullness = 1.0
-        waterWaveCoordinator?.waveView.start(false)
+        tailImageView.contentMode = .
+//        waterWaveCoordinator = WaterWaveCoordinator(waveContainerView)
+////        waterWaveCoordinator?.beginTimer(60)
+//        waterWaveCoordinator?.waveView.fullness = 1.0
+//        waterWaveCoordinator?.waveView.start(false)
     }
     
     @IBOutlet weak var waveHeight: UISlider!
