@@ -94,15 +94,23 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTo-7d-LPp">
                                         <rect key="frame" x="0.0" y="293.5" width="315" height="293.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WMf-b4-cy4">
-                                                <rect key="frame" x="-158" y="-146.5" width="630" height="587"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QgP-Fi-77c">
+                                                <rect key="frame" x="-79.5" y="-73.5" width="473" height="440"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WMf-b4-cy4">
+                                                <rect key="frame" x="117.5" y="110.5" width="79" height="73.5"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.29803921568627451" green="0.66274509803921566" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="WMf-b4-cy4" firstAttribute="height" secondItem="rTo-7d-LPp" secondAttribute="height" multiplier="2" id="0Ik-kG-JUQ"/>
+                                            <constraint firstItem="WMf-b4-cy4" firstAttribute="height" secondItem="rTo-7d-LPp" secondAttribute="height" multiplier="0.25" id="0Ik-kG-JUQ"/>
                                             <constraint firstItem="WMf-b4-cy4" firstAttribute="centerX" secondItem="rTo-7d-LPp" secondAttribute="centerX" id="9oB-o4-LRN"/>
-                                            <constraint firstItem="WMf-b4-cy4" firstAttribute="width" secondItem="rTo-7d-LPp" secondAttribute="width" multiplier="2" id="X2e-xm-qmt"/>
+                                            <constraint firstItem="QgP-Fi-77c" firstAttribute="width" secondItem="rTo-7d-LPp" secondAttribute="width" multiplier="1.5" id="BSM-iu-HTJ"/>
+                                            <constraint firstItem="QgP-Fi-77c" firstAttribute="centerY" secondItem="rTo-7d-LPp" secondAttribute="centerY" id="JUy-7e-e0Z"/>
+                                            <constraint firstItem="QgP-Fi-77c" firstAttribute="centerX" secondItem="rTo-7d-LPp" secondAttribute="centerX" id="MFt-PJ-WND"/>
+                                            <constraint firstItem="QgP-Fi-77c" firstAttribute="height" secondItem="rTo-7d-LPp" secondAttribute="height" multiplier="1.5" id="RNx-ur-C1l"/>
+                                            <constraint firstItem="WMf-b4-cy4" firstAttribute="width" secondItem="rTo-7d-LPp" secondAttribute="width" multiplier="0.25" id="X2e-xm-qmt"/>
                                             <constraint firstItem="WMf-b4-cy4" firstAttribute="centerY" secondItem="rTo-7d-LPp" secondAttribute="centerY" id="eTz-On-ATP"/>
                                         </constraints>
                                     </view>
@@ -166,7 +174,8 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="tileImageView" destination="WMf-b4-cy4" id="6Vn-Vp-Ty0"/>
+                        <outlet property="imageView" destination="WMf-b4-cy4" id="OJR-Vg-6Za"/>
+                        <outlet property="tileView" destination="QgP-Fi-77c" id="IXg-GT-rAG"/>
                         <outlet property="waveContainerView" destination="4cb-eM-mF0" id="5Ul-ZN-f6F"/>
                         <outlet property="waveHeight" destination="bjS-Oa-QKH" id="Kjy-uz-5dn"/>
                     </connections>

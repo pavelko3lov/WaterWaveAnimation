@@ -6,7 +6,6 @@
 import UIKit
 
 extension UIImage {
-    
     func maskWithColor(color: UIColor) -> UIImage? {
         let maskImage = cgImage!
         
@@ -29,14 +28,14 @@ extension UIImage {
             return nil
         }
     }
-    
 }
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var waveContainerView: UIView!
     
-    @IBOutlet weak var tileImageView: UIImageView!
+    @IBOutlet weak var tileView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     
     var waterWaveCoordinator: WaterWaveCoordinator?
     
@@ -53,16 +52,52 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let colorImage = UIImage(named: "loyalty")?.maskWithColor(color: UIColor(red: 53/255, green: 150/255, blue: 189/255, alpha: 1.0))
-        let backgroundImage = resizeImage(colorImage, targetSize: CGSize(width: 50, height: 50))!
-        tileImageView.backgroundColor = UIColor(patternImage: backgroundImage)
-        tileImageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 6))
+        makeTileBackground(UIImage(named: "loyalty"))
+//        makeTileBackground(UIImage(named: "iconNotification"))
+//        makeTileBackground(UIImage(named: "miles"))
+    }
+    
+    func makeTileBackground(_ image: UIImage?) {
+        //add transparent space arround
+        let spacedImage = addSpaceToImage(image, scale: 1.5)
+        //colorize image to certain color
+        let colorSpacedImage = spacedImage?.maskWithColor(color: UIColor(red: 53/255, green: 150/255, blue: 189/255, alpha: 1.0))
+        //descrease common image size to certain
+        var newSize: CGSize
+        if let size = colorSpacedImage?.size {
+            newSize = CGSize(width: size.width * 0.2, height: size.height * 0.2)
+        } else {
+            newSize = CGSize(width: 40, height: 40)
+        }
+        let resizeColorSpacedImage = resizeImage(colorSpacedImage, targetSize: newSize)
+        tileView.backgroundColor = resizeColorSpacedImage != nil ? UIColor(patternImage: resizeColorSpacedImage!): UIColor.clear
+        tileView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 8))
+        
+        imageView.image = image?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = UIColor.white
+    }
+    
+    func addSpaceToImage(_ image: UIImage?, scale: CGFloat) -> UIImage? {
+        guard let image = image else { return nil }
+        
+        let width = image.size.width * scale
+        let height = image.size.height * scale
+        
+        let origin = CGPoint(x: (width - image.size.width) / 2, y: (height - image.size.height) / 2)
+        
+        // Now we can draw anything we want into this new context.
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: width, height: height), false, 0.0)
+        image.draw(at: origin)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
     
     func resizeImage(_ image: UIImage?, targetSize: CGSize) -> UIImage? {
         guard let image = image else { return nil }
-        let size = image.size
         
+        let size = image.size
         let widthRatio  = targetSize.width  / image.size.width
         let heightRatio = targetSize.height / image.size.height
         
