@@ -47,6 +47,11 @@ open class WaveView: UIView {
         
         maskImageLayer.frame = invertView.bounds
         invertView.layer.mask = maskImageLayer
+        
+        phase = CGFloat(arc4random_uniform(3)) + 3.1
+        waveHeight = CGFloat(arc4random_uniform(3)) + 3.1
+        waveSpeed = CGFloat(arc4random_uniform(2)) + 3.6
+        waveLength = CGFloat(arc4random_uniform(3)) + 3.1
     }
     
     open func start(_ withStarting: Bool=true) {
@@ -68,20 +73,20 @@ open class WaveView: UIView {
     var fullness: CGFloat = 0
     var vHeight: CGFloat = 0
     
-    var waveLength: CGFloat = 1.1
-    var waveSpeed: CGFloat = 0.6
-    var waveHeight: CGFloat = 4.0
-    var phase: CGFloat = 0.2
+    var phase: CGFloat = 5.3
+    var waveHeight: CGFloat = 3.3
+    var waveSpeed: CGFloat = 3.73
+    var waveLength: CGFloat = 3.9
     
     var phaseDirect: CGFloat = 1
     var waveHeightDirect: CGFloat = 1
     var waveSpeedDirect: CGFloat = 1
     var waveLengthDirect: CGFloat = 1
     
-    let phaseKoef: CGFloat = 0.01
-    let waveHeightKoef: CGFloat = 0.05
-    let waveSpeedKoef: CGFloat = 0.01
-    let waveLengthKoef: CGFloat = 0.01
+    let phaseKoef: CGFloat = 0.009
+    let waveHeightKoef: CGFloat = 0.047
+    let waveSpeedKoef: CGFloat = 0.33
+    let waveLengthKoef: CGFloat = 0.007
     
     func randomWave() {
         if !(phase >= 0.1 && phase <= 10.0) {
@@ -89,17 +94,17 @@ open class WaveView: UIView {
         }
         phase = phase + phaseKoef * phaseDirect
         
-        if !(waveHeight >= 3.0 && waveHeight <= 9.0) {
+        if !(waveHeight >= 3.0 && waveHeight <= 8.0) {
             waveHeightDirect *= -1
         }
         waveHeight = waveHeight + waveHeightKoef * waveHeightDirect
         
-        if !(waveSpeed >= 0.5 && waveSpeed <= 1.25) {
+        if !(waveSpeed >= 3.5 && waveSpeed <= 5.0) {
             waveSpeedDirect *= -1
         }
         waveSpeed = waveSpeed + waveSpeedKoef * waveSpeedDirect
         
-        if !(waveLength >= 1.0 && waveLength <= 2.0) {
+        if !(waveLength >= 3.0 && waveLength <= 6.0) {
             waveLengthDirect *= -1
         }
         waveLength = waveLength + waveLengthKoef * waveLengthDirect

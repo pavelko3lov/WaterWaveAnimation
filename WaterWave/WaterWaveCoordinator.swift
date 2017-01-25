@@ -30,11 +30,9 @@ class WaterWaveCoordinator: TimerCounterDelegate {
         
         invertView.center = waveView.center
         
-        
-        
-        for bubble in BubbleCoordinater(CGSize(width: a, height: a)).bubbles {
-            waveView.addSubview(bubble)
-        }
+//        for bubble in BubbleCoordinater(CGSize(width: a, height: a)).bubbles {
+//            waveView.addSubview(bubble)
+//        }
     }
     
     
