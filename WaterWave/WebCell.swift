@@ -29,39 +29,40 @@ class WebCell: UITableViewCell {
 //        webView = WKWebView(frame: .zero, configuration: webConfiguration)
 //        addSubview(webView)
 //        view = webView
-        webview.scrollView.isScrollEnabled = false
         
         let webConfiguration = WKWebViewConfiguration()
         webV = WKWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height), configuration: webConfiguration)
-        
+        webV = WKWebView(frame: bounds, configuration: webConfiguration)
+        webV.scrollView.isScrollEnabled = false
         addSubview(webV)
-        webV.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        
+        if let url = URL(string: "http://advisa.work/bank_partner/webview01.html") {
+            let urlRequest = URLRequest(url: url)
+            webV.load(urlRequest)
+        }
     }
     func fill() {
 //        let myURL = URL(string: "http://advisa.work/bank_partner/webview01.html")
 //        let myRequest = URLRequest(url: myURL!)
 //        webView.load(myRequest)
         
-        if webV.uiDelegate == nil {
-            if let url = URL(string: "http://advisa.work/bank_partner/webview01.html") {
-                let urlRequest = URLRequest(url: url)
-                    
-                webV.load(urlRequest)
-                
-//                webview.loadRequest(urlRequest)
-            }
-        }
+//        if webV.uiDelegate == nil {
+//            if let url = URL(string: "http://advisa.work/bank_partner/webview01.html") {
+//                let urlRequest = URLRequest(url: url)
+//                    
+//                webV.load(urlRequest)
+//                
+////                webview.loadRequest(urlRequest)
+//            }
+//        }
         
     }
     
     var observing = false
     func startObservingHeight() {
-        let options = NSKeyValueObservingOptions([.old])
+        let options = NSKeyValueObservingOptions([.new])
         observing = true
-        
-        webview.scalesPageToFit = true
-        webview.contentMode = .scaleAspectFit
-
+        webV.frame.size = bounds.size
         webV.addObserver(self, forKeyPath: "scrollView.contentSize", options: options, context: nil)
 //        webview.addObserver(self, forKeyPath: "scrollView.contentSize", options: options, context: nil)
 //        webview.addObserver(self, forKeyPath: "frame", options: options, context: nil)
@@ -86,6 +87,7 @@ class WebCell: UITableViewCell {
 //            let oldSize = zeChange[NSKeyValueChangeKey.newKey]?.cgSizeValue
 //            let newSize = zeChange[NSKeyValueChangeKey.newKey]?.cgSizeValue
 //            changeHeight?(oldSize?.height)
+            webV.frame.size = webV.scrollView.contentSize
             changeHeight?(webV.scrollView.contentSize.height)
 //            if prev > 0 && prev < webview.scrollView.contentSize.height {
 //                webview.scrollView.contentSize.height = initial

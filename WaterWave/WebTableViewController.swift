@@ -67,7 +67,7 @@ class WebTableViewController: UITableViewController, UIWebViewDelegate, WKUIDele
 //        cell.webview.delegate = self
         return cell
     }
-    var webViewHeight : CGFloat = UIScreen.main.bounds.size.height
+    var webViewHeight : CGFloat = 100//UIScreen.main.bounds.size.height
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("qwer")
