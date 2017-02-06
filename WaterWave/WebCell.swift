@@ -26,7 +26,7 @@ class WebCell: UITableViewCell {
 //        webView = WKWebView(frame: .zero, configuration: webConfiguration)
 //        addSubview(webView)
 //        view = webView
-        
+        webview.scrollView.isScrollEnabled = false
     }
     func fill() {
 //        let myURL = URL(string: "http://advisa.work/bank_partner/webview01.html")
@@ -49,11 +49,11 @@ class WebCell: UITableViewCell {
     func startObservingHeight() {
         let options = NSKeyValueObservingOptions([.old])
         observing = true
-        webview.scrollView.addObserver(self, forKeyPath: "contentSize", options: options, context: nil)
+        webview.addObserver(self, forKeyPath: "scrollView.contentSize", options: options, context: nil)
     }
     
     func stopObservingHeight() {
-        webview.scrollView.removeObserver(self, forKeyPath: "contentSize", context: nil)
+        webview.removeObserver(self, forKeyPath: "scrollView.wfcontentSize", context: nil)
         observing = false
     }
     
