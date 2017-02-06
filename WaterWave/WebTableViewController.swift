@@ -13,7 +13,7 @@ class WebTableViewController: UITableViewController, UIWebViewDelegate {//WKUIDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.backgroundColor = UIColor.lightGray
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -53,7 +53,6 @@ class WebTableViewController: UITableViewController, UIWebViewDelegate {//WKUIDe
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WebCell", for: indexPath) as! WebCell
         // Configure the cell...
-        cell.fill()
         cell.webview.delegate = self
         cell.changeHeight = { [weak self] height in
             if let height = height {
@@ -63,6 +62,7 @@ class WebTableViewController: UITableViewController, UIWebViewDelegate {//WKUIDe
 //                self?.resizeCollectionView()
             }
         }
+        cell.fill()
         return cell
     }
     var webViewHeight : CGFloat = 0

@@ -49,16 +49,20 @@ class WebCell: UITableViewCell {
     func startObservingHeight() {
         let options = NSKeyValueObservingOptions([.old])
         observing = true
+      
         webview.addObserver(self, forKeyPath: "scrollView.contentSize", options: options, context: nil)
+        webview.addObserver(self, forKeyPath: "frame", options: options, context: nil)
     }
     
     func stopObservingHeight() {
         webview.removeObserver(self, forKeyPath: "scrollView.wfcontentSize", context: nil)
+        webview.removeObserver(self, forKeyPath: "frame", context: nil)
+        
         observing = false
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print("asdf", (change as! [NSKeyValueChangeKey: NSValue]), webview.scrollView.contentSize.height)
+        print(">>> ", keyPath!, (change as! [NSKeyValueChangeKey: NSValue]), webview.scrollView.contentSize.height)
         
         if let zeChange = change as? [NSKeyValueChangeKey: NSValue] {
             let oldSize = zeChange[NSKeyValueChangeKey.newKey]?.cgSizeValue
