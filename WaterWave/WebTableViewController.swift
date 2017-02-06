@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class WebTableViewController: UITableViewController, UIWebViewDelegate {//WKUIDelegate {
+class WebTableViewController: UITableViewController, UIWebViewDelegate, WKUIDelegate, WKNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +20,9 @@ class WebTableViewController: UITableViewController, UIWebViewDelegate {//WKUIDe
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         tableView.register(UINib(nibName: "WebCell", bundle: nil), forCellReuseIdentifier: "WebCell")
-//        tableView.estimatedRowHeight = 
         
-        
-        
+//        self.tableView.estimatedRowHeight = 80
+//        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     
@@ -53,19 +52,41 @@ class WebTableViewController: UITableViewController, UIWebViewDelegate {//WKUIDe
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WebCell", for: indexPath) as! WebCell
         // Configure the cell...
-        cell.webview.delegate = self
         cell.changeHeight = { [weak self] height in
             if let height = height {
                 self?.webViewHeight = height
-//                print("webViewHeight", self!.webViewHeight)
                 self?.tableView.reloadData()
+                
+//                print("webViewHeight", self!.webViewHeight)
 //                self?.resizeCollectionView()
             }
         }
+        cell.webV.navigationDelegate = self
         cell.fill()
+        cell.webV.uiDelegate = self
+//        cell.webview.delegate = self
         return cell
     }
-    var webViewHeight : CGFloat = 0
+    var webViewHeight : CGFloat = UIScreen.main.bounds.size.height
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("qwer")
+        let javastr = "(document.height !== undefined) ? document.height : document.body.offsetHeight;"
+        webView.evaluateJavaScript(javastr) { [weak self] (anny, error) in
+            print("anny", anny)
+            if let h = anny as? CGFloat {
+                self?.webViewHeight = h
+                self?.tableView.reloadData()
+            }
+            (self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? WebCell)?.startObservingHeight()
+        }
+
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        
+    }
+    
     
     
     public func webViewDidStartLoad(_ webView: UIWebView) {}
@@ -74,24 +95,21 @@ class WebTableViewController: UITableViewController, UIWebViewDelegate {//WKUIDe
         if let str = webView.stringByEvaluatingJavaScript(from: "(document.height !== undefined) ? document.height : document.body.offsetHeight;") {
             webViewHeight = CGFloat((str as NSString).floatValue)
 //            tableView.reloadRows(at: [IndexPath(row: 0, section: Sections.webView.rawValue)], with: .automatic)
-            tableView.reloadData()
+//            tableView.reloadData()
             
             (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? WebCell)?.startObservingHeight()
-            
+//            (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? WebCell)?.webview.scrollView.delegate = self
         }
     }
     
-    
-    func resizeCollectionView() {//_ layout: UICollectionViewLayout) {
-//        collectionView?.performBatchUpdates({
-//            layout.prepare()
-//            self.collectionView?.setCollectionViewLayout(layout, animated: true)
-//        }, completion: nil )
-//        
-//        if let rect = collectionView?.contentOffset {
-//            collectionView?.setContentOffset(rect, animated: true)
-//        }
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+    }
+    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        
+    }
+    
+    func resizeCollectionView() {
         tableView.beginUpdates()
         tableView.endUpdates()
     }

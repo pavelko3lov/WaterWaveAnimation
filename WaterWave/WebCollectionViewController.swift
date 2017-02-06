@@ -15,8 +15,8 @@ class WebCollectionViewController: UICollectionViewController, UIWebViewDelegate
         collectionView?.backgroundColor = UIColor.lightGray
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-//        self.collectionView!.register(UINib(nibName: "WebCollectionCell", bundle: Bundle(for: WebCollectionCell.self)), forCellWithReuseIdentifier: "WebCollectionCell")
-        self.collectionView!.register(WebCollectionCell.self, forCellWithReuseIdentifier: "WebCollectionCell")
+        self.collectionView!.register(UINib(nibName: "WebCollectionCell", bundle: nil), forCellWithReuseIdentifier: "WebCollectionCell")
+//        self.collectionView!.register(WebCollectionCell.self, forCellWithReuseIdentifier: "WebCollectionCell")
         
 //        collectionView?.reloadData()
     }
@@ -32,7 +32,6 @@ class WebCollectionViewController: UICollectionViewController, UIWebViewDelegate
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WebCollectionCell", for: indexPath) as! WebCollectionCell
     
-        cell.webCollectionView.delegate = self
         cell.changeHeight = { [weak self] height in
             if let height = height {
                 self?.webViewHeight = height
@@ -41,6 +40,7 @@ class WebCollectionViewController: UICollectionViewController, UIWebViewDelegate
             }
         }
         cell.fill()
+        cell.webCollectionView.delegate = self
         
         return cell
     }
@@ -50,11 +50,11 @@ class WebCollectionViewController: UICollectionViewController, UIWebViewDelegate
     public func webViewDidFinishLoad(_ webView: UIWebView) {
         if let str = webView.stringByEvaluatingJavaScript(from: "(document.height !== undefined) ? document.height : document.body.offsetHeight;") {
             webViewHeight = CGFloat((str as NSString).floatValue)
-            //            tableView.reloadRows(at: [IndexPath(row: 0, section: Sections.webView.rawValue)], with: .automatic)
-            collectionView?.reloadData()
+//            tableView.reloadRows(at: [IndexPath(row: 0, section: Sections.webView.rawValue)], with: .automatic)
             
             (collectionView?.cellForItem(at: IndexPath(row: 0, section: 0)) as? WebCollectionCell)?.startObservingHeight()
             
+                        collectionView?.reloadData()
         }
     }
     
