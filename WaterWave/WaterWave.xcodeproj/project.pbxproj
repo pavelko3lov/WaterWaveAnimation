@@ -12,6 +12,10 @@
 		280931371E31FDA0006B390C /* TimerCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280931361E31FDA0006B390C /* TimerCounter.swift */; };
 		280931391E320150006B390C /* WaterWaveCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280931381E320150006B390C /* WaterWaveCoordinator.swift */; };
 		2809313B1E320800006B390C /* BubbleCoordinater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809313A1E320800006B390C /* BubbleCoordinater.swift */; };
+		28AD30631E48BB4700C2420D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AD30621E48BB4700C2420D /* WebViewController.swift */; };
+		28AD30651E48C0B900C2420D /* WebTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AD30641E48C0B900C2420D /* WebTableViewController.swift */; };
+		28AD30681E48C1BD00C2420D /* WebCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AD30661E48C1BD00C2420D /* WebCell.swift */; };
+		28AD30691E48C1BD00C2420D /* WebCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD30671E48C1BD00C2420D /* WebCell.xib */; };
 		C467C4681E31695400567239 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C4641E31695400567239 /* AppDelegate.swift */; };
 		C467C4691E31695400567239 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C467C4651E31695400567239 /* Info.plist */; };
 		C467C46A1E31695400567239 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467C4661E31695400567239 /* ViewController.swift */; };
@@ -27,6 +31,10 @@
 		280931361E31FDA0006B390C /* TimerCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerCounter.swift; sourceTree = SOURCE_ROOT; };
 		280931381E320150006B390C /* WaterWaveCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterWaveCoordinator.swift; sourceTree = SOURCE_ROOT; };
 		2809313A1E320800006B390C /* BubbleCoordinater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCoordinater.swift; sourceTree = SOURCE_ROOT; };
+		28AD30621E48BB4700C2420D /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = SOURCE_ROOT; };
+		28AD30641E48C0B900C2420D /* WebTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		28AD30661E48C1BD00C2420D /* WebCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebCell.swift; sourceTree = SOURCE_ROOT; };
+		28AD30671E48C1BD00C2420D /* WebCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebCell.xib; sourceTree = SOURCE_ROOT; };
 		B6A0CAEE1C1BD8B5001B4CDE /* WaterWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C467C4641E31695400567239 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C467C4651E31695400567239 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
@@ -70,11 +78,15 @@
 				C467C4741E31697000567239 /* Assets.xcassets */,
 				C467C46C1E31695D00567239 /* LaunchScreen.storyboard */,
 				C467C46E1E31695D00567239 /* Main.storyboard */,
+				28AD30641E48C0B900C2420D /* WebTableViewController.swift */,
 				C467C4641E31695400567239 /* AppDelegate.swift */,
 				C467C4651E31695400567239 /* Info.plist */,
 				C467C4661E31695400567239 /* ViewController.swift */,
 				C467C4671E31695400567239 /* WaveView.swift */,
+				28AD30661E48C1BD00C2420D /* WebCell.swift */,
+				28AD30671E48C1BD00C2420D /* WebCell.xib */,
 				280931381E320150006B390C /* WaterWaveCoordinator.swift */,
+				28AD30621E48BB4700C2420D /* WebViewController.swift */,
 				2809313A1E320800006B390C /* BubbleCoordinater.swift */,
 				280931361E31FDA0006B390C /* TimerCounter.swift */,
 				280931321E31F70D006B390C /* InvertView.swift */,
@@ -148,6 +160,7 @@
 				C467C4691E31695400567239 /* Info.plist in Resources */,
 				280931351E31F718006B390C /* InvertView.xib in Resources */,
 				C467C4701E31695D00567239 /* LaunchScreen.storyboard in Resources */,
+				28AD30691E48C1BD00C2420D /* WebCell.xib in Resources */,
 				C467C4751E31697000567239 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,11 +173,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				280931371E31FDA0006B390C /* TimerCounter.swift in Sources */,
+				28AD30631E48BB4700C2420D /* WebViewController.swift in Sources */,
 				C467C46A1E31695400567239 /* ViewController.swift in Sources */,
+				28AD30651E48C0B900C2420D /* WebTableViewController.swift in Sources */,
 				C467C46B1E31695400567239 /* WaveView.swift in Sources */,
 				280931331E31F70D006B390C /* InvertView.swift in Sources */,
 				2809313B1E320800006B390C /* BubbleCoordinater.swift in Sources */,
 				C467C4681E31695400567239 /* AppDelegate.swift in Sources */,
+				28AD30681E48C1BD00C2420D /* WebCell.swift in Sources */,
 				280931391E320150006B390C /* WaterWaveCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

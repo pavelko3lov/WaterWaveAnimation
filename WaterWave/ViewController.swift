@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     
     var waterWaveCoordinator: WaterWaveCoordinator?
     
+    @IBOutlet weak var textview: UITextView!
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -18,6 +20,15 @@ class ViewController: UIViewController {
 //        waterWaveCoordinator?.beginTimer(60)
         waterWaveCoordinator?.waveView.fullness = 0.5
         waterWaveCoordinator?.waveView.start()
+        
+        
+        waveContainerView.layer.shadowColor = UIColor.black.cgColor
+        waveContainerView.layer.shadowOpacity = 0.5
+        waveContainerView.layer.shadowOffset = CGSize.zero
+        waveContainerView.layer.shadowRadius = 10
+        
+        textview.text = "http://advisa.work/bank_partner/webview01.html"
+        textview.textColor = UIColor.green
     }
     
     @IBOutlet weak var waveHeight: UISlider!
